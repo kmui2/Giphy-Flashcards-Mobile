@@ -1,4 +1,8 @@
-This is a starter template for [Ionic](http://ionicframework.com/docs/) projects.
+#Giphy Flashcards for Mobile
+
+Giphy Flashcards but on mobile using Ionic 3 Framework.
+
+
 
 ## How to use this template
 
