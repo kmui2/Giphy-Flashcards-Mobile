@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+      Shopping List
+      <div> {{ (user | async)?.uid }} </div>
+       <button *ngIf="!(afAuth.auth.currentUser)" (click)="login()">Login</button>
+       <button *ngIf="(afAuth.auth.currentUser)" (click)="logout()">Logout</button>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+ 
+<ion-content>
+  <ion-row>
+    <ion-col col-9>
+      <ion-item>
+        <ion-input type="text" [(ngModel)]="newWord" placeholder="New Word"></ion-input>
+          <ion-input type="text" [(ngModel)]="newTranslation" placeholder="New translation"></ion-input>
+      </ion-item>
+    </ion-col>
+    <ion-col>
+      <button ion-button (click)="addFlashcard()">Add!</button>
+    </ion-col>
+  </ion-row>
+ 
+  <ion-list>
+    <ion-item-sliding *ngFor="let f of flashcards | async">
+      <ion-item>
+        {{ f.word }}
+        {{ f.translation }}
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="danger" icon-only (click)="removeItem(f.$key)"><ion-icon name="trash"></ion-icon></button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>
